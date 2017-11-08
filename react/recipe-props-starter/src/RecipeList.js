@@ -27,7 +27,7 @@ class RecipeList extends Component {
     ];
     const recipes = recipesList.map((r, i) => (<Recipe key={i} {...r} />))
     return (
-      <div>
+      <div className="recipe-list">
         {recipes}
       </div>
     );
