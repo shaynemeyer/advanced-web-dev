@@ -23,6 +23,6 @@ const FlagChoices = props => {
       <StyledButton text="GUESS" type="submit" />
     </form>
   )
-}
+};
 
 export default FlagChoices;
