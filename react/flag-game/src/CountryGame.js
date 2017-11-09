@@ -13,13 +13,20 @@ class CountryGame extends Component {
   }
 
   render() {
+    let {
+      countries,
+      correctOption,
+      options,
+      questionState
+    } = this.state;
+    let output = <div>Loading...</div>;
+
     return (
-      <div style{{marginTop: '15px'}}>
-        hello
+      <div style={{marginTop: '15px'}}>
+        {output}
       </div>
     )
   }
 }
 
 export default CountryGame;
-x
