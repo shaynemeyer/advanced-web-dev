@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
-import './Header.css';
+import PropTypes from 'prop-types'
+import './Navbar.css';
 
-class Header extends Component {
+class Navbar extends Component {
+  static defaultProps = {
+    onNewRecipe() {}
+  };
+
+  static propTypes = {
+    onNewRecipe: PropTypes.func
+  };
+
   render() {
     return (
       <header>
@@ -9,7 +18,7 @@ class Header extends Component {
           <a href="">Recipe App</a>
         </h2>
         <nav>
-          <li><a>New Recipe</a></li>
+          <li><a onClick={this.props.onNewRecipe}>New Recipe</a></li>
           <li><a>Home</a></li>
           <li><a>About</a></li>
           <li><a>Contact Us</a></li>
@@ -19,4 +28,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Navbar;
