@@ -1,0 +1,107 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Warbler",
+		"_postman_id": "f69a52b0-e66f-c4c2-5cc1-57caa86c369f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Warbler Signup",
+			"request": {
+				"url": "http://localhost:8081/api/auth/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"willma@flintstone.com\",\n  \"username\": \"willma\",\n  \"password\": \"fred\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Message",
+			"request": {
+				"url": "http://localhost:8081/api/users/5a05c5da9663a83fb5dd9234/messages",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YTA1YzVkYTk2NjNhODNmYjVkZDkyMzQiLCJpYXQiOjE1MTAzMjc3NzF9.gg6CDZ1ZdJGd_2OorDrla2rM0SeahM680-pMu3eOLV4",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\": \"I love cake.\"\n}"
+				},
+				"description": "Add a new message for user."
+			},
+			"response": []
+		},
+		{
+			"name": "Warbler Signup - Fred",
+			"request": {
+				"url": "http://localhost:8081/api/auth/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"fred@flintstone.com\",\n  \"username\": \"fred\",\n  \"password\": \"dino\"\n}"
+				},
+				"description": "Add Fred"
+			},
+			"response": []
+		},
+		{
+			"name": "Warbler Signup - Willma",
+			"request": {
+				"url": "http://localhost:8081/api/auth/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"willma@flintstone.com\",\n  \"username\": \"willma\",\n  \"password\": \"fred\"\n}"
+				},
+				"description": "Signup using Willma"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Messages ",
+			"request": {
+				"url": "http://localhost:8081/api/messages",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "GET all messages."
+			},
+			"response": []
+		}
+	]
+}
