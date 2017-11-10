@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import worldImg from './world.jpg';
+import CountryGame from './CountryGame';
 import './App.css';
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
           style={{backgroundImage: `url(${worldImg}` }}>
           <h1 className="title-text">Guess The Flag</h1>
         </header>
-
+        <CountryGame/>
       </div>
     );
   }
