@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 import './App.css';
 
 class App extends Component {
@@ -10,37 +12,33 @@ class App extends Component {
       username: '',
       token: '',
       message: '',
-      profileImageUrl: ''
+      profileImageUrl: '',
+      loadedComponent: 'SignUp'
     }
   }
 
   handleClickSignUp = (e) => {
 
-    this.setState({message: "Clicked Sign up"});
+    this.setState({message: "Clicked Sign up", loadedComponent: 'SignUp'});
   };
 
   handleClickSignIn = (e) => {
-    const loginUrlBase = 'http://localhost:8081/api/auth/signin';
-    const payload = {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ "email": "Leola36@yahoo.com", "password": "password"})
-    }
+    this.setState({loadedComponent: 'SignIn'});
+  };
 
-    fetch(loginUrlBase, payload)
-      .then(data => data.json())
-      .then(data => {
-        this.setState({
-          userId: data.userId,
-          message: `Welcome ${data.username}`,
-          username: data.username,
-          token: data.token,
-          profileImageUrl: data.profileImageUrl
-        });
-      });
+  handleSignIn = (user) => {
+    this.setState({
+      userId: user.userId,
+      username: user.username,
+      token: user.token,
+      message: '',
+      profileImageUrl: user.profileImageUrl,
+      loadedComponent: 'Home'
+    })
+  };
+
+  handleSignUp = (confirm) => {
+
   };
 
   handleClickSignOut = (e) => {
@@ -51,6 +49,14 @@ class App extends Component {
       message: 'Please log in.',
       profileImageUrl: ''
     })
+  };
+
+  loadComponent() {
+    if(this.state.loadedComponent === 'SignIn') {
+      return <SignIn handleSignIn={this.handleSignIn} />
+    } else {
+      return <SignUp handleSignUp={this.handleSignUp}/>
+    }
   }
 
   render() {
@@ -58,6 +64,7 @@ class App extends Component {
       <div>
         <Navbar handleClickSignUp={this.handleClickSignUp} handleClickSignIn={this.handleClickSignIn} handleClickSignOut={this.handleClickSignOut} username={this.state.username} />
         {this.state.message}
+        {this.loadComponent()}
       </div>
     );
   }

@@ -23,26 +23,67 @@ export default class SignUp extends Component {
       email: "",
       username: "",
       password: "",
-      imageUrl: ""
+      profileImageUrl: ""
     });
   };
 
   render() {
+    const { email, username, password, profileImageUrl } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <div className="form-line">
-            <label htmlFor='img-input'>Image Url</label>
+            <label htmlFor='email-input'>Email</label>
             <input
-              id="img-input"
+              id="email-input"
               type="text"
-              name='img'
-              value={img}
+              name='email'
+              value={email}
               size={36}
               autoComplete="off"
               placeholder=""
               onChange={this.handleChange} />
           </div>
+          <div className="form-line">
+            <label htmlFor='username-input'>Username</label>
+            <input
+              id="username-input"
+              type="text"
+              name='username'
+              value={username}
+              size={36}
+              autoComplete="off"
+              placeholder=""
+              onChange={this.handleChange} />
+          </div>
+          <div className="form-line">
+            <label htmlFor='password-input'>Password</label>
+            <input
+              id="password-input"
+              type="password"
+              name='password'
+              value={password}
+              size={36}
+              autoComplete="off"
+              placeholder=""
+              onChange={this.handleChange} />
+          </div>
+          <div className="form-line">
+            <label htmlFor='profileImageUrl-input'>Profile Image Url</label>
+            <input
+              id="profileImageUrl-input"
+              type="text"
+              name='profileImageUrl'
+              value={profileImageUrl}
+              size={36}
+              autoComplete="off"
+              placeholder=""
+              onChange={this.handleChange} />
+          </div>
+          <button
+            type="submit"
+            className="buttons"
+            style={{alignSelf: 'flex-end', marginRight: 0}}>Sign Up</button>
         </form>
       </div>
     );
