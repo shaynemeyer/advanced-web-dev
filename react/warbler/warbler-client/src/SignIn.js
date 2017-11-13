@@ -12,6 +12,7 @@ export default class SignIn extends Component {
   }
 
   handleOnSubmit = (e) => {
+    e.preventDefault();
     const {handleSignIn} = this.props;
     const loginUrlBase = 'http://localhost:8081/api/auth/signin';
     const payload = {
@@ -20,24 +21,43 @@ export default class SignIn extends Component {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ "email": "Leola36@yahoo.com", "password": "password"})
+      body: JSON.stringify({ "email": this.state.email, "password": this.state.password})
     }
 
     fetch(loginUrlBase, payload)
       .then(data => data.json())
       .then(data => {
-        const user = {
-          userId: data.userId,
-          message: `Welcome ${data.username}`,
-          username: data.username,
-          token: data.token,
-          profileImageUrl: data.profileImageUrl
-        };
-        handleSignIn(user);
+        if(data.message === 'Invalid Email/Password') {
+          this.setState({message: data.message});
+        } else {
+          const user = {
+            userId: data.userId,
+            message: `Welcome ${data.username}`,
+            username: data.username,
+            token: data.token,
+            profileImageUrl: data.profileImageUrl
+          };
+          handleSignIn(user);
+        }
+
       })
       .catch((error) => {
         this.setState({error: 'Log in failed. Please check your credentials and try again.'})
       });
+  };
+
+  handleChange = e => {
+    this.setState({[e.target.name]: e.target.value});
+  };
+
+  renderErrorMessage = () => {
+    const { message } = this.state;
+
+    return (
+      <div className="error-message">
+        {message}
+      </div>
+    )
   }
 
   render() {
@@ -46,7 +66,7 @@ export default class SignIn extends Component {
       <div className="signup-wrapper">
         <h3>Welcome Back</h3>
         <div className="signin-form-container">
-          <form className="signin-form">
+          <form className="signin-form" onSubmit={this.handleOnSubmit}>
             <div className="form-line">
               <label htmlFor="signin-title-input">Email</label>
               <input
@@ -75,6 +95,8 @@ export default class SignIn extends Component {
               type="submit"
               className="buttons"
               style={{alignSelf: 'flex-end', marginRight: 0}}>Sign In</button>
+
+            {this.renderErrorMessage()}
           </form>
         </div>
       </div>

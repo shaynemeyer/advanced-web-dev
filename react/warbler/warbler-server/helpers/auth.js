@@ -12,11 +12,11 @@ exports.signin = function(req,res){
           token
         });
       } else {
-        res.status(400).json({message: 'Invalid Email/Password.'})
+        res.status(400).json({message: 'Invalid Email/Password.', username: ''})
       }
     })
   }).catch(function(err){
-    res.status(400).json({message: 'Invalid Email/Password'})
+    res.status(400).json({message: 'Invalid Email/Password', username: ''})
   })
 };
 
