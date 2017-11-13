@@ -1,0 +1,28 @@
+.signin-form-container {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-line label {
+    display:block;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-line input {
+    margin-bottom: 5px;
+    border-radius: 6px;
+    border: 1px solid lightgray;
+    height: 20px;
+}
+
+.buttons {
+    border-radius: 6px;
+    padding: 0 10px 1px 10px;
+    margin: 8px 0;
+    align-self: flex-end;
+    font-size: 1.1em;
+}

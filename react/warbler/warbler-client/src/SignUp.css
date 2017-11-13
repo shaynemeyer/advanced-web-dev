@@ -1,0 +1,45 @@
+.signup-wrapper {
+    margin-top: 50px;
+}
+
+.signup-wrapper h3 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.signup-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-line label {
+    display:block;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-line input {
+    margin-bottom: 5px;
+    border-radius: 6px;
+    border: 1px solid lightgray;
+    height: 20px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px;
+    padding: 15px;
+}
+
+.buttons {
+    border-radius: 6px;
+    padding: 0 10px 1px 10px;
+    margin: 8px 0;
+    align-self: center;
+    font-size: 1em;
+}
