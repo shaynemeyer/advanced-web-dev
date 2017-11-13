@@ -1,5 +1,14 @@
-.signin-form-container {
+.signup-wrapper {
     margin-top: 50px;
+}
+
+.signup-wrapper h3 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+.signin-form-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,6 +26,15 @@
     border-radius: 6px;
     border: 1px solid lightgray;
     height: 20px;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px;
+    padding: 15px;
 }
 
 .buttons {

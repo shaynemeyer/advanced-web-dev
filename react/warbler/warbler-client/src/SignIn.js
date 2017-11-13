@@ -43,38 +43,40 @@ export default class SignIn extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div className="signin-form-container">
-        <form className="signin-form">
-          <div className="signin-form-line">
-            <label htmlFor="signin-title-input">Email</label>
-            <input
-              id='signin-title-input'
-              key='email'
-              type="text"
-              name='email'
-              value={email}
-              size={42}
-              autoComplete="off"
-              onChange={this.handleChange} />
-          </div>
-          <div className="signin-form-line">
-            <label htmlFor="signin-title-input">Password</label>
-            <input
-              id='signin-title-input'
-              key='password'
-              type="password"
-              name='password'
-              value={password}
-              size={42}
-              autoComplete="off"
-              onChange={this.handleChange} />
-          </div>
-          <button
-            type="submit"
-            className="buttons"
-            style={{alignSelf: 'flex-end', marginRight: 0}}>Sign In</button>
-        </form>
-
+      <div className="signup-wrapper">
+        <h3>Welcome Back</h3>
+        <div className="signin-form-container">
+          <form className="signin-form">
+            <div className="form-line">
+              <label htmlFor="signin-title-input">Email</label>
+              <input
+                id='signin-title-input'
+                key='email'
+                type="text"
+                name='email'
+                value={email}
+                size={42}
+                autoComplete="off"
+                onChange={this.handleChange} />
+            </div>
+            <div className="form-line">
+              <label htmlFor="signin-title-input">Password</label>
+              <input
+                id='signin-title-input'
+                key='password'
+                type="password"
+                name='password'
+                value={password}
+                size={42}
+                autoComplete="off"
+                onChange={this.handleChange} />
+            </div>
+            <button
+              type="submit"
+              className="buttons"
+              style={{alignSelf: 'flex-end', marginRight: 0}}>Sign In</button>
+          </form>
+        </div>
       </div>
     )
   }
