@@ -18,13 +18,31 @@ export default class SignUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // bubble up on onSave to parent
-    this.setState({
-      email: "",
-      username: "",
-      password: "",
-      profileImageUrl: ""
-    });
+    const { email, username, password, profileImageUrl } = this.state;
+    const {handleSignUp} = this.props;
+    const signupUrlBase = 'http://localhost:8081/api/auth/signup';
+    const payload = {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, username, password, profileImageUrl})
+    }
+
+    fetch(signupUrlBase, payload)
+      .then(data => data.json())
+      .then(data => {
+        if(data.errmsg) {
+          this.setState({message: data.errmsg});
+        } else {
+          handleSignUp({...data, message: `Welcome ${data.username}`});
+        }
+
+      })
+      .catch((error) => {
+        this.setState({message: error})
+      });
   };
 
   render() {

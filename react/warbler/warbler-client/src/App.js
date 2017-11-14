@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './Navbar';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import Home from './Home';
 import './App.css';
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
 
   handleClickSignUp = (e) => {
 
-    this.setState({message: "Clicked Sign up", loadedComponent: 'SignUp'});
+    this.setState({loadedComponent: 'SignUp'});
   };
 
   handleClickSignIn = (e) => {
@@ -34,11 +35,15 @@ class App extends Component {
       message: '',
       profileImageUrl: user.profileImageUrl,
       loadedComponent: 'Home'
-    })
+    });
   };
 
   handleSignUp = (confirm) => {
-
+    if(confirm.username) {
+      this.setState({loadedComponent: 'SignIn', message: 'Please Sign In'});
+    } else {
+      this.setState({message: 'Something went wrong with signup.'});
+    }
   };
 
   handleClickSignOut = (e) => {
@@ -46,14 +51,18 @@ class App extends Component {
       userId: '',
       username: '',
       token: '',
-      message: 'Please log in.',
-      profileImageUrl: ''
+      message: '',
+      profileImageUrl: '',
+      loadedComponent: 'SignUp'
     })
   };
 
   loadComponent() {
-    if(this.state.loadedComponent === 'SignIn') {
-      return <SignIn handleSignIn={this.handleSignIn} />
+    const { loadedComponent } = this.state;
+    if (loadedComponent === 'SignIn') {
+      return <SignIn handleSignIn={this.handleSignIn}/>
+    } else if (loadedComponent === 'Home') {
+      return <Home />
     } else {
       return <SignUp handleSignUp={this.handleSignUp}/>
     }
